@@ -12,7 +12,9 @@ but you can use it in your web project as well.\
 This was a feature that I have implemented in one of my project which has
 exact same requirements.Since my project was a mobile and tablet base project so
 I have tested this functionality in different IOS and Android devices as well as older
-and low spec devices like Samsung Galaxy S5 and IPhone 5S and found no performancissues on those devices.
+and low specs devices like Samsung Galaxy S5 and IPhone 5S and found no performance issues on those devices.\
+You can further optimize it by display only **above the fold content** and lazy loading the rest of the content on scroll.\
+I have tried to implement the virtual list but found that it does not support multi column grid.
 
 For more info on how to add android and ios platform please visit official ionic docs site.
 **https://ionicframework.com/docs/installation/cli**
