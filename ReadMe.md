@@ -1,7 +1,7 @@
 ### Ionic Angular date range picker calendar:
 This is a blazzing fast **date range picker calendar** used as a modal here.
 This calendar remembers its previous selected dates and scroll user to that
-particular date view when the user next time opens the calendar.Some of its featureare as follows:\
+particular date view when the user next time opens the calendar.Some of its features are as follows:\
 -It has filter button in the header,by clicking any of the filter it will select the
 dates automatically and scroll down to that particular view.\
 -You can also restrict the dates and remove the filter.\
