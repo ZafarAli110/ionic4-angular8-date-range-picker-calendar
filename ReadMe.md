@@ -1,25 +1,24 @@
 This is a blazzing fast **date range picker calendar** used as a modal here.
 This calendar remembers its previous selected dates and scroll user to that
-particular date view when the user next time opens the calendar.Some of its featureare as follows:
-
+particular date view when the user next time opens the calendar.Some of its featureare as follows:\
 -It has filter button in the header,by clicking any of the filter it will select the
-dates automatically and scroll down to that particular view.
--You can also restrict the dates and remove the filter.
+dates automatically and scroll down to that particular view.\
+-You can also restrict the dates and remove the filter.\
 -It preserve its previous selected state.
 
 I have created this application for mobile and tablet view
-but you can use it in your web project as well.
+but you can use it in your web project as well.\
 This was a feature that I have implemented in one of my project which has
 exact same requirements.Since my project was a mobile and tablet base project so
 I have tested this functionality in different IOS and Android devices as well as older
 and low spec devices like Samsung Galaxy S5 and IPhone 5S and found no performancissues on those devices.
 
 For more info on how to add android and ios platform please visit official ionic docs site.
-https://ionicframework.com/docs/installation/cli
+**https://ionicframework.com/docs/installation/cli
 
-## for demo head over to : https://zafarali110.github.io/ionic4-angular8-date-range-picker-calendar/home
+### for demo head over to : https://zafarali110.github.io/ionic4-angular8-date-range-picker-calendar/home
 
-## Available Scripts: 
+### Available Scripts: 
 
 Make sure you have node js install in your computer, headover to https://nodejs.org/en/ and 
 install node.
