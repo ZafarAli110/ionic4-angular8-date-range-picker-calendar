@@ -4,7 +4,9 @@ import {
   Input, 
   ViewChild, 
   ChangeDetectorRef, 
-  AfterContentInit 
+  AfterContentInit, 
+  ChangeDetectionStrategy,
+  NgZone
 } from '@angular/core';
 import { IonContent, ModalController, NavParams, DomController } from '@ionic/angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -13,7 +15,16 @@ import { filter, distinctUntilChanged, tap } from 'rxjs/operators';
 import * as moment from 'moment';
 import { month, CalendarService } from '../../services/calendar.service';
 import { UIService } from '../../services/ui.service';
-import { FilterBtnConstants } from './calendar-filters/calendar-filters';
+
+export enum FilterBtnConstants {
+  empthyString = '',
+  today = 'Today',
+  yesterday = 'Yesterday',
+  lastSevenDays = 'LastSevenDays',
+  lastThirtyDays = 'LastThirtyDays',
+  thisMonth = 'ThisMonth',
+  lastMonth = 'LastMonth',
+}
 
 interface SubjectType {
   date: moment.Moment;
@@ -31,6 +42,7 @@ export interface CalendarState {
   selector: 'app-date-range-calendar',
   templateUrl: './date-range-calendar.page.html',
   styleUrls: ['./date-range-calendar.page.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DateRangeCalendarPage implements OnInit,AfterContentInit {
   @Input() showFilterBtns = true;
@@ -42,7 +54,6 @@ export class DateRangeCalendarPage implements OnInit,AfterContentInit {
   selectedButtonName = FilterBtnConstants.empthyString;
   scrollPositionValue = 0;
   valueTop = 6985;  //calculated value of the scrollHeight
-  enableDefaultSelection = false;
   previousState: CalendarState = {
     dateFrom: null,
     dateTo: null,
@@ -51,6 +62,7 @@ export class DateRangeCalendarPage implements OnInit,AfterContentInit {
   };
   subject$ = new Subject<SubjectType>();
   subjectSubscription: Subscription;
+  
 
   constructor(private fb: FormBuilder,
     private modalController: ModalController,
@@ -58,7 +70,8 @@ export class DateRangeCalendarPage implements OnInit,AfterContentInit {
     private uiService: UIService,
     private changeDetectionRef: ChangeDetectorRef,
     private domController: DomController,
-    private calendarService: CalendarService) {
+    private calendarService: CalendarService,
+    private zone: NgZone) {
     this.initDateRangeForm();
     this.previousState = this.navParams.get('previousState');
   }
@@ -83,7 +96,7 @@ export class DateRangeCalendarPage implements OnInit,AfterContentInit {
     if (this.previousState.dateFrom) {
       this.setPreviousStateData();
     } else {
-      this.enableDefaultSelection = true;
+      this.selectLastSevenDays();
       this.scrollMe.scrollToPoint(0, this.valueTop, 300);
     }
   }
@@ -191,6 +204,74 @@ export class DateRangeCalendarPage implements OnInit,AfterContentInit {
 
   public isStartAndEndDateSame(): boolean {
     return this.dateForm.value.dateFrom == this.dateForm.value.dateTo;
+  }
+
+  public selectThisMonth(): void {
+    this.selectedButtonName = FilterBtnConstants.thisMonth;
+    this.scrollPositionValue = this.valueTop;
+    this.scrollToBottom();
+    const firstDay = moment().clone().startOf("month");
+    const lastDay = moment().clone();
+    this.setStartDate(firstDay, this.formatDate(firstDay));
+    this.setEndDate(lastDay, this.formatDate(lastDay));
+  }
+
+  public selectLastMonth(): void {
+    this.scrollToBottom();
+    this.selectedButtonName = FilterBtnConstants.lastMonth;
+    this.scrollPositionValue = this.valueTop;
+    const lastMonth = moment().clone().subtract(1, "month");
+    const firstDay = lastMonth.clone().startOf("month");
+    const lastDay = lastMonth.clone().endOf("month");
+    this.setStartDate(firstDay, this.formatDate(firstDay));
+    this.setEndDate(lastDay, this.formatDate(lastDay));
+  }
+
+  public selectLastThirtyDays(): void {
+    this.selectedButtonName = FilterBtnConstants.lastThirtyDays;
+    this.scrollPositionValue = this.valueTop;
+    this.scrollToBottom();
+    this.filterSelectionByDaysAgo(29);
+  }
+
+  public selectLastSevenDays(): void {
+    this.selectedButtonName = FilterBtnConstants.lastSevenDays;
+    this.scrollPositionValue = this.valueTop;
+    this.scrollToBottom();
+    this.filterSelectionByDaysAgo(6);
+  }
+
+  private filterSelectionByDaysAgo(daysAgo: number): void {
+    const endDate = moment().clone();
+    const startDate = endDate.clone().subtract(daysAgo, "days");
+    this.setStartDate(startDate, this.formatDate(startDate));
+    this.setEndDate(endDate, this.formatDate(endDate));
+  }
+
+  public selectYesterday(): void {
+    this.selectedButtonName = FilterBtnConstants.yesterday;
+    this.scrollPositionValue = this.valueTop;
+    this.scrollToBottom();
+    const yesterday = moment().clone().subtract(1, "days");
+    this.setStartDate(yesterday, this.formatDate(yesterday));
+    this.setEndDate(yesterday, this.formatDate(yesterday));
+  }
+
+  public selectToday(): void {
+    this.selectedButtonName = FilterBtnConstants.today;
+    this.scrollPositionValue = this.valueTop;
+    this.scrollToBottom();
+    const today = moment().clone();
+    this.setStartDate(today, this.formatDate(today));
+    this.setEndDate(today, this.formatDate(today));
+  }
+
+  private scrollToBottom(): void {
+    this.zone.runOutsideAngular(() => {
+      setTimeout(() => {
+        this.scrollMe && this.scrollMe.scrollToBottom(300);
+      });
+    });
   }
 
   public dismissPage(): void {

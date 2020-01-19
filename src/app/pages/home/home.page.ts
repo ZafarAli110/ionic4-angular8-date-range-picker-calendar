@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import * as moment from 'moment';
-import { CalendarState, DateRangeCalendarPage } from '../date-range-calendar/date-range-calendar.page';
+import { CalendarState, DateRangeCalendarPage, FilterBtnConstants } from '../date-range-calendar/date-range-calendar.page';
 import { UIService } from '../../services/ui.service';
 import { LoggerService } from '../../services/logger.service';
-import { FilterBtnConstants } from '../date-range-calendar/calendar-filters/calendar-filters';
 
 @Component({
   selector: 'app-home',

@@ -57,6 +57,39 @@
   color: #36485b;
 }
 
+//Filters
+.grid-filter-btns {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  margin: 0px auto;
+  grid-column-gap: 10px;
+  grid-row-gap: 20px;
+  padding: 20px;
+  background-color: #180f3f;
+}
+.span-filter {
+  margin: 0px;
+  padding: 7px;
+  height: auto;
+  color: white;
+  border-radius: 15px;
+  font-size: 0.8em;
+  text-align: center;
+}
+.selected-filter {
+  background: white;
+  color: #180f3f;
+}
+
+@media (max-width: 320px) {
+  .span-filter {
+    font-size: 3.5vw;
+  }
+}
+
+
 //############## date-selection css #################//
 .selection-start {
   background-color: #180f3f;

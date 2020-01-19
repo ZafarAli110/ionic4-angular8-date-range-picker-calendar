@@ -7,7 +7,7 @@ import { IonicModule } from "@ionic/angular";
 import { DateRangeCalendarPageRoutingModule } from "./date-range-calendar-routing.module";
 
 import { DateRangeCalendarPage } from "./date-range-calendar.page";
-import { CalendarFiltersComponent } from "./calendar-filters/calendar-filters";
+
 
 @NgModule({
   imports: [
@@ -17,6 +17,6 @@ import { CalendarFiltersComponent } from "./calendar-filters/calendar-filters";
     IonicModule,
     DateRangeCalendarPageRoutingModule
   ],
-  declarations: [DateRangeCalendarPage, CalendarFiltersComponent]
+  declarations: [DateRangeCalendarPage]
 })
 export class DateRangeCalendarPageModule {}
