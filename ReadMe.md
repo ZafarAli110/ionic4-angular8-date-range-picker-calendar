@@ -15,7 +15,7 @@ I have tested this functionality in different IOS and Android devices as well as
 and low spec devices like Samsung Galaxy S5 and IPhone 5S and found no performancissues on those devices.
 
 For more info on how to add android and ios platform please visit official ionic docs site.
-**https://ionicframework.com/docs/installation/cli
+**https://ionicframework.com/docs/installation/cli**
 
 ### for demo head over to : https://zafarali110.github.io/ionic4-angular8-date-range-picker-calendar/home
 
