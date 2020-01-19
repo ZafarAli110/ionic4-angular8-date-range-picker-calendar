@@ -1,0 +1,83 @@
+.heading-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #180f3f;
+  color: white;
+  #dismiss-div {
+    position: absolute;
+    left: 0px;
+    top: 5px;
+    font-size: 22px;
+    width: 50px;
+    padding: 0px 10px;
+    text-align: center;
+  }
+  #dismiss-div:active {
+    opacity: 0.5;
+  }
+  p {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  #border-bottom {
+    height: 2px;
+    background: white;
+    width: 60%;
+    margin-top: 10px;
+  }
+}
+
+//The Grids
+.day-of-week,
+.date-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-row-gap: 10px;
+  grid-column-gap: 1px;
+  align-items: center;
+}
+.sizeOf-div {
+  height: 30px;
+  text-align: center;
+}
+.heading-month-year {
+  margin-left: 5%;
+  font-size: 16px;
+  font-weight: 500;
+  color: #30357a;
+}
+
+.span-day {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #36485b;
+}
+
+//############## date-selection css #################//
+.selection-start {
+  background-color: #180f3f;
+  color: white;
+  border-top-left-radius: 25%;
+  border-bottom-left-radius: 25%;
+}
+
+.selection-end {
+  background-color: #180f3f;
+  color: white;
+  border-top-right-radius: 25%;
+  border-bottom-right-radius: 25%;
+}
+
+.same-date {
+  border-radius: 25%;
+}
+
+.in-range {
+  font-weight: bold;
+  background-color: #e9eaea;
+}
+

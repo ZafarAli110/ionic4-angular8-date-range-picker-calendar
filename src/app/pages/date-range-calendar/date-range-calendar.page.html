@@ -1,0 +1,60 @@
+<div class="heading-container">
+  <div id="dismiss-div" (click)="dismissPage()">x</div>
+  <div>
+    <p>Selected Date Range</p>
+    <span style="font-size: 12px;">
+      &nbsp;{{dateForm.value.dateFrom ? dateForm.value.dateFrom + ' to ' + dateForm.value.dateTo : ''}}
+    </span>
+  </div>
+  <div id='border-bottom'></div>
+</div>
+
+
+<calendar-filters *ngIf="showFilterBtns" 
+                  [dateForm]="dateForm" 
+                  [selectedButtonName]="selectedButtonName"
+                  [scrollPositionValue]="scrollPositionValue" 
+                  [valueTop]="valueTop" 
+                  [scrollMe]="scrollMe"
+                  [enableDefaultSelection]="enableDefaultSelection">
+</calendar-filters>
+
+<div class="day-of-week sizeOf-div" style="background: #fbfcfc; color: #a6aaaf;">
+  <div>Sun</div>
+  <div>Mon</div>
+  <div>Tue</div>
+  <div>Wed</div>
+  <div>Thu</div>
+  <div>Fri</div>
+  <div>Sat</div>
+</div>
+
+<ion-content #scrollMe>
+  <ng-container *ngFor="let month of calendar">
+    <p class="heading-month-year">
+      {{month.monthName }} {{month.year}}
+    </p>
+    <div class="date-grid">
+      <div *ngFor="let day of month.dates" class="sizeOf-div span-day" 
+           [ngClass]="{
+             'selection-start': isSelectionStart(day) ,
+             'selection-end': isSelectionEnd(day)  ,
+             'in-range': isInRange(day) ,
+             'same-date':isStartAndEndDateSame()
+            }" 
+            id="dateRef" 
+            (click)="subject$.next({date:day,event:$event})">
+        {{day?.date()}}
+      </div>
+    </div>
+  </ng-container>
+  <div class="sizeOf-div"></div>
+</ion-content>
+<ion-footer>
+  <ion-button style="--background:#180F3F;margin:0px" 
+              expand="full" 
+              (click)="applyDates()"
+              [disabled]="restrictSelectionTo && !isSelectionInRestrictedRange()">
+    Apply
+  </ion-button>
+</ion-footer>

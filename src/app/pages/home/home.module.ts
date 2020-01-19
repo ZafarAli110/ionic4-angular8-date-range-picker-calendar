@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { HomePage } from './home.page';
+import { PreventDoubleClickDirective } from 'src/app/directives/prevent-double-click.directive';
+
 
 @NgModule({
   imports: [
@@ -16,8 +18,8 @@ import { HomePage } from './home.page';
         path: '',
         component: HomePage
       }
-    ])
+    ]),
   ],
-  declarations: [HomePage]
+  declarations: [HomePage, PreventDoubleClickDirective]
 })
-export class HomePageModule {}
+export class HomePageModule { }
