@@ -5,6 +5,7 @@ particular date view when the user next time opens the calendar.Some of its feat
 dates automatically and scroll down to that particular view.
 2.You can also restrict the dates and remove the filter.
 3.It preserve its previous selected state.
+
 I have created this application for mobile and tablet view
 but you can use it in your web project as well.
 This was a feature that I have implemented in one of my project which has
