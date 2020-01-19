@@ -1,3 +1,4 @@
+### Ionic Angular date range picker calendar:
 This is a blazzing fast **date range picker calendar** used as a modal here.
 This calendar remembers its previous selected dates and scroll user to that
 particular date view when the user next time opens the calendar.Some of its featureare as follows:\
@@ -24,7 +25,7 @@ Make sure you have node js install in your computer, headover to https://nodejs.
 install node.
 
 Go to your command line and install ionic globally by runing the following command
-**npm install -g ionic 
+**npm install -g ionic**
 
 Go to project directory and run **npm install** or **yarn install** in case if your are using yarn.
 
