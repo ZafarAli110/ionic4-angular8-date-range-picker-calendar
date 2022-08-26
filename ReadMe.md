@@ -3,12 +3,12 @@ A fast **date range picker calendar** used as a modal.
 Some of its features are as follows:\
 -It has filter button in the header,by clicking any of the filter it will select the
 dates automatically and scroll down to that particular view.\
--You can also restrict the dates and remove the filter.\
+-You can restrict the dates and remove the filter.\
 -It preserve its previous selected state.
 
 I have tested the functionality in different IOS and Android devices as well as older
 and low specs devices like Samsung Galaxy S5 and IPhone 5S and found no performance issues on those devices.\
-You can further optimize it by displaying only **above the fold content** and lazy loading the rest of the content on scroll.\
+You can further optimize it by displaying only **above the fold content** and lazy loading the rest of the content on scroll.
 
 For more info on how to add android and ios platform please visit official ionic docs site.
 **https://ionicframework.com/docs/installation/cli**
