@@ -1,20 +1,14 @@
 ### Ionic Angular date range picker calendar:
-This is a blazzing fast **date range picker calendar** used as a modal here.
-This calendar remembers its previous selected dates and scroll user to that
-particular date view when the user next time opens the calendar.Some of its features are as follows:\
+A fast **date range picker calendar** used as a modal. 
+Some of its features are as follows:\
 -It has filter button in the header,by clicking any of the filter it will select the
 dates automatically and scroll down to that particular view.\
 -You can also restrict the dates and remove the filter.\
 -It preserve its previous selected state.
 
-I have created this application for mobile and tablet view
-but you can use it in your web project as well.\
-This was a feature that I have implemented in one of my project which has
-exact same requirements.Since my project was a mobile and tablet base project so
-I have tested this functionality in different IOS and Android devices as well as older
+I have tested the functionality in different IOS and Android devices as well as older
 and low specs devices like Samsung Galaxy S5 and IPhone 5S and found no performance issues on those devices.\
-You can further optimize it by display only **above the fold content** and lazy loading the rest of the content on scroll.\
-I have tried to implement the virtual list but found that it does not support multi column grid.
+You can further optimize it by displaying only **above the fold content** and lazy loading the rest of the content on scroll.\
 
 For more info on how to add android and ios platform please visit official ionic docs site.
 **https://ionicframework.com/docs/installation/cli**
